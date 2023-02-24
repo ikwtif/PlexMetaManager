@@ -1,0 +1,107 @@
+## This file is a template remove the .template to use the file
+
+libraries:              # Library mappings must have a colon (:) placed after them
+  Movies:
+    metadata_path:
+    - file: config/collections_movies.yml
+    overlay_path:
+      # - remove_overlays: true                     #########
+      - reapply_overlay: true
+      - file: config/overlays_movies.yml
+    operations:
+      mass_critic_rating_update: imdb
+      mass_audience_rating_update: tmdb
+
+  TV Shows:
+    metadata_path:
+      - file: config/collections_tvshows.yml
+    overlay_path:
+      # - remove_overlays: true                     #########
+      - reapply_overlay: true
+      - file: config/overlays_tvshows.yml
+    operations:
+      mass_critic_rating_update: imdb
+      mass_audience_rating_update: tmdb
+
+settings:                  # Can be individually specified per library as well
+  cache: true
+  cache_expiration: 60
+  asset_directory: config/metadata/
+  asset_depth: 3
+  asset_folders: true
+  assets_for_all: false
+  sync_mode: append
+  show_unmanaged: true
+  show_filtered: false
+  show_missing: true
+  save_missing: true
+  run_again_delay: 2
+  missing_only_released: false
+  create_asset_folders: false
+  collection_minimum: 1
+  delete_below_minimum: false
+  tvdb_language: default
+  show_missing_assets: true
+  dimensional_asset_rename: false
+  show_missing_season_assets: false
+  delete_not_scheduled: false
+  only_filter_missing: false
+  show_options: false
+  ignore_ids:
+  ignore_imdb_ids:
+  playlist_sync_to_user: all
+  prioritize_assets: false
+  download_url_assets: false
+  show_missing_episode_assets: false
+  show_asset_not_needed: true
+  default_collection_order:
+  item_refresh_delay: 0
+  show_unconfigured: true
+  playlist_exclude_users:
+  playlist_report: true
+  verify_ssl: true
+  custom_repo:
+  check_nightly: false
+plex:                       # Can be individually specified per library as well
+  url: #########
+  token: #########
+  timeout: 60
+  clean_bundles: false
+  empty_trash: false
+  optimize: false
+tmdb:
+  apikey: #########
+  language: en
+  cache_expiration: 60
+  region:
+tautulli:                   # Can be individually specified per library as well
+  url: #########
+  apikey: #########
+radarr:
+  url: #########
+  token: #########
+  upgrade_existing: false
+  root_folder_path: #########
+  monitor: movie
+  availability: announced
+  quality_profile: 1080p
+  tag: pmm
+  search: true
+  add_missing: false
+  add_existing: false
+  radarr_path:
+  plex_path:
+sonarr:
+  url: #########
+  token: #########
+  upgrade_existing: false
+  root_folder_path: #########
+  monitor: all
+  availability: announced
+  quality_profile: 720p
+  tag: pmm
+  search: true
+  add_missing: false
+  add_existing: false
+  radarr_path:
+  plex_path:

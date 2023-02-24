@@ -1,0 +1,300 @@
+######################################################
+#                OVERLAYS - BACKGROUND               #
+######################################################
+
+overlays:
+        
+######################################################
+#                OVERLAYS - RATINGS                  #
+######################################################
+
+######################################################
+#                      CRITICS                       #
+######################################################
+  # rating_high:
+    # overlay:
+      # name: Rating_High_BG
+      # group: tomato
+      # weight: 30
+      # horizontal_offset: 350
+      # horizontal_align: center
+      # vertical_offset: 50
+      # vertical_align: bottom
+      # file: config/metadata/overlays/rating/rt_cf_med_res.png
+    # mdblist_list: https://mdblist.com/lists/plexmetamanager/certifiedfreshmovies
+        
+  # rating_mid:
+    # overlay:
+      # name: Rating_Mid_BG
+      # group: tomato
+      # weight: 20
+      # horizontal_offset: 350
+      # horizontal_align: center
+      # vertical_offset: 50
+      # vertical_align: bottom
+      # file: config/metadata/overlays/rating/rt_fresh_med_res.png
+    # plex_search:
+      # all:
+        # critic_rating.gte: 6.0
+        # critic_rating.lte: 10.0
+
+  # rating_low:
+    # overlay:
+      # name: Rating_Low_BG
+      # group: tomato
+      # weight: 10
+      # horizontal_offset: 350
+      # horizontal_align: center
+      # vertical_offset: 50
+      # vertical_align: bottom
+      # file: config/metadata/overlays/rating/rt_rotten_med_res.png
+    # plex_search:
+      # all:
+        # critic_rating.gte: 0.1
+        # critic_rating.lte: 5.9
+
+  # critic_rating:
+    # overlay:
+      # group: rating_text
+      # weight: 10
+      # rating_type: critic_rating
+      # name: text(<<critic_rating%>>%)
+      # horizontal_offset: 398
+      # horizontal_align: center
+      # vertical_offset: 86
+      # vertical_align: bottom
+      # font: config/metadata/overlays/font/Adlib.ttf
+      # font_size: 60
+      # font_color: "#282a2d"
+    # plex_search:
+      # all:
+        # critic_rating.gte: 0.1
+        # critic_rating.lte: 10.0
+   
+######################################################
+#                      AUDIENCE                      #
+######################################################
+  rating_high:
+    overlay:
+      name: Rating_High_BG
+      group: tomato
+      weight: 30
+      horizontal_offset: 0
+      horizontal_align: right
+      vertical_offset: 0
+      vertical_align: bottom
+      file: config/metadata/overlays/rating/high.png
+    mdblist_list: https://mdblist.com/lists/plexmetamanager/certifiedfreshmovies
+
+  rating_mid:
+    overlay:
+      name: Rating_Mid_BG
+      group: tomato
+      weight: 20
+      horizontal_offset: 0
+      horizontal_align: right
+      vertical_offset: 0
+      vertical_align: bottom
+      file: config/metadata/overlays/rating/mid.png
+    plex_search:
+      all:
+        audience_rating.gte: 6.0
+        audience_rating.lte: 10.0
+
+  rating_low:
+    overlay:
+      name: Rating_Low_BG
+      group: tomato
+      weight: 10
+      horizontal_offset: 0
+      horizontal_align: right
+      vertical_offset: 0
+      vertical_align: bottom
+      file: config/metadata/overlays/rating/low.png
+    plex_search:
+      all:
+        audience_rating.gte: 0.1
+        audience_rating.lte: 5.9
+        
+  audience_rating:
+    overlay:
+      group: rating_text2
+      weight: 10
+      rating_type: audience_rating
+      name: text(<<audience_rating%>>)
+      horizontal_offset: 100
+      horizontal_align: right
+      vertical_offset: 100
+      vertical_align: bottom
+      font: config/metadata/overlays/font/Adlib.ttf
+      font_size: 60
+      font_color: "#FFFFFF"
+    plex_search:
+      all:
+        audience_rating.gte: 0.1
+        audience_rating.lte: 10.0
+        
+######################################################
+#                  OVERLAYS - AUDIO                  #
+######################################################
+
+  Dolby_TrueHD:
+    overlay:
+      name: Dolby_TrueHD
+      group: Audio
+      weight: 275
+      horizontal_offset: 0
+      horizontal_align: left
+      vertical_offset: 0
+      vertical_align: top
+      file: config/metadata/overlays/audio/Dolby-TrueHD.png
+    plex_all: true
+    filters:
+      audio_track_title.regex: '(?i)^(?!.*(atmos))(?=.*\b(true[ .-]?hd)\b).*'
+    
+  Dolby_Digital+Atmos:
+    overlay:
+      name: Dolby_Digital+Atmos
+      group: Audio
+      weight: 300
+      horizontal_offset: 0
+      horizontal_align: left
+      vertical_offset: 0
+      vertical_align: top
+      file: config/metadata/overlays/audio/DD+Atmos.png
+    plex_all: true
+    filters:
+      audio_track_title.regex: '(?i)((?=.*([^-]DD[P+](?!A)|eac3))(?=.*\b(atmos(\b|\d))))|(?=.*\b(DDPA(\b|\d)))'
+    
+  Dolby_Atmos:
+    overlay:
+      name: Dolby_Atmos
+      group: Audio
+      weight: 300
+      horizontal_offset: 0
+      horizontal_align: left
+      vertical_offset: 0
+      vertical_align: top
+      file: config/metadata/overlays/audio/dolbyatmos.png
+    plex_search:
+      all:
+        hdr: false
+    filters:
+      audio_track_title.regex: '(?i)^(?!.*([^-]DD[P+](?!A)|eac3|true[ .-]?hd))(?=.*\b(atmos(\b|\d))).*'
+    
+  Dolby_TrueHD_Atmos:
+    overlay:
+      name: Dolby_TrueHD_Atmos
+      group: Audio
+      weight: 500
+      horizontal_offset: 0
+      horizontal_align: left
+      vertical_offset: 0
+      vertical_align: top
+      file: config/metadata/overlays/audio/THD+Atmos.png
+    plex_all: true
+    filters:
+      audio_track_title.regex: '(?i)(?=.*\b(true[ .-]?hd))(?=.*\b(atmos(\b|\d)))'
+    
+######################################################
+#               OVERLAYS - RESOLUTIONS               #
+######################################################
+
+  4K_HDR:
+    overlay:
+      name: 4K_HDR
+      group: Resolution
+      weight: 90
+      horizontal_offset: 0
+      horizontal_align: left
+      vertical_offset: 0
+      vertical_align: top
+      file: config/metadata/overlays/resolution/4K_HDR.png
+    plex_search:
+      all:
+        hdr: true
+        resolution: 4K
+
+  1080P_HDR:
+    overlay:
+      name: 1080P_HDR
+      group: Resolution
+      weight: 90
+      horizontal_offset: 0
+      horizontal_align: left
+      vertical_offset: 0
+      vertical_align: top
+      file: config/metadata/overlays/resolution/1080P_HDR.png
+    plex_search:
+      all:
+        hdr: true
+        resolution: 1080p
+
+  1080P_DV:
+    overlay:
+      name: 1080P_DV
+      group: Resolution
+      weight: 90
+      horizontal_offset: 0
+      horizontal_align: left
+      vertical_offset: 0
+      vertical_align: top
+      file: config/metadata/overlays/resolution/1080P_DV.png
+    plex_search:
+      all:
+        resolution: 1080p
+    filters:
+      has_dolby_vision: true
+
+  4K_DV:
+    overlay:
+      name: 4K_DV
+      group: Resolution
+      weight: 30
+      horizontal_offset: 0
+      horizontal_align: left
+      vertical_offset: 0
+      vertical_align: top
+      file: config/metadata/overlays/resolution/4K_DV.png
+    plex_search:
+      all:
+        resolution: 4K
+    filters:
+      has_dolby_vision: true
+
+  4K:
+    overlay:
+      name: 4K
+      group: Resolution
+      weight: 20
+      horizontal_offset: 0
+      horizontal_align: left
+      vertical_offset: 0
+      vertical_align: top
+      file: config/metadata/overlays/resolution/4K.png
+    plex_search:
+      all:
+        resolution: 4k
+        hdr: false
+
+  # low_quality:
+    # overlay:
+      # name: low_quality
+      # horizontal_align: left
+      # horizontal_offset: 0
+      # vertical_align: top
+      # vertical_offset: 0
+      # file: config/metadata/overlays/resolution/low_quality_banner_small.png
+    # suppress_overlays:
+      # - 4K_HDR
+      # - 4K_DV
+      # - 4K
+      # - 1080P_HDR
+      # - 1080P_DV
+    # plex_all: true
+    # plex_search:
+      # any:
+        # resolution:
+        # - 576p
+        # - 480p
+        # - dv

@@ -1,0 +1,10 @@
+*//logs
+/Setup
+/Overlays
+/Collections
+docker-compose.yml
+?_report.yml
+UUID
+.ash_history
+*.cashe
+config.yml

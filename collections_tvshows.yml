@@ -1,0 +1,49 @@
+######################################################
+#              COLLECTIONS                           #
+######################################################
+templates:
+  Chart:
+    sort_title: +1_<<num>><<collection_name>>
+    sync_mode: sync
+    smart_label: random
+    collection_mode: hide               # hides in library
+    visible_home: true                  # shows on home screen
+    
+collections:
+  IMDb Top 250 Shows:
+    imdb_chart: top_shows
+    collection_order: custom
+    sync_mode: sync
+    sort_title: 01-Top Shows
+    # limit: 50
+    visible_library: false
+    collection_mode: hide               # hides in library
+    
+  Recently Aired TV Shows:
+    sort_title: 00-Recently Released
+    builder_level: season
+    smart_filter:
+      sort_by: season.desc
+      all:
+        episode_air_date: 30
+    summary: Aired Shows In The Last 30 Days
+    collection_mode: hide
+    visible_home: true                  # shows on home screen
+
+  Trending TV Shows:
+    template: { name: Chart, num: 2 }
+    tmdb_trending_daily: 30
+    tmdb_trending_weekly: 30
+    sync_mode: sync
+    summary: Trending Shows
+
+  Popular TV Shows:
+    template: { name: Chart, num: 3 }
+    tmdb_popular: 40
+    imdb_chart: popular_shows
+    imdb_list:
+      url: https://www.imdb.com/search/title/?title_type=tv_series,tv_miniseries
+      limit: 40
+    summary: Popular Shows across the internet
+    sonarr_add_missing: true
+    sonarr_tag: pmm - Popular

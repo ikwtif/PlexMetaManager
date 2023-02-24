@@ -1,0 +1,99 @@
+######################################################
+#              COLLECTIONS                           #
+######################################################
+templates:
+  Chart:
+    sort_title: +1_<<num>><<collection_name>>
+    sync_mode: sync
+    smart_label: random
+    collection_mode: hide               # hides in library
+    visible_home: true                  # shows on home screen
+    
+  Collection:
+    optional:
+      - collection
+      - movie
+    tmdb_collection_details: <<collection>>
+    tmdb_movie: <<movie>>
+    sync_mode: sync
+    item_assets: true
+    collection_order: release
+    delete_below_minimum: true
+    
+collections:
+  IMDb Top 250 Movies:
+    imdb_chart: top_movies
+    collection_order: custom
+    sync_mode: sync
+    sort_title: 01-Top Movies
+    visible_library: false
+    collection_mode: hide               # hides in library
+
+  Recently Released Movies:
+    sort_title: 00-Recently Released
+    smart_filter:
+      all:
+        release: 90
+    summary: Released Movies in the last 90 Days
+    collection_mode: hide
+    visible_home: true                  # shows on home screen
+    
+  ATMOS+DV:
+   plex_all: true
+    filters:
+      - has_dolby_vision: true
+        audio_track_title.regex: (?i)\batmos(\b|\d)
+      - has_dolby_vision: true
+        filepath.regex: (?i)\batmos(\b|\d)
+  # Atmos:
+    # sort_title: 00-Atmos
+    # smart_filter:
+      # all:
+        # audio_codec: 
+        # - dolby_atmos
+        # - truehd_atmos
+        # - plus_atmos
+    # summary: Dolby Atmos
+    # collection_mode: hide
+    # visible_home: true                  # shows on home screen
+  
+  Trending Movies:
+    template: { name: Chart, num: 2 }
+    tmdb_trending_daily: 30
+    tmdb_trending_weekly: 30
+    sync_mode: sync
+    summary: Trending Movies
+    
+  Popular Movies:
+    template: { name: Chart, num: 3 }
+    tmdb_popular: 40
+    imdb_list:
+      url: https://www.imdb.com/search/title/?title_type=feature,documentary,short
+      limit: 40
+    summary: Popular Movies Across The Internet
+    radarr_add_missing: true
+    radarr_tag: pmm - Popular
+
+  DCU:
+    template:
+      name: Collection
+    imdb_list: https://www.imdb.com/list/ls047446610/
+  MCU:
+    template:
+      name: Collection
+    imdb_list: https://www.imdb.com/list/ls066946827/
+  MCU - Chronological:
+    template:
+      name: Collection
+    imdb_list: https://www.imdb.com/list/ls021001839/
+    collection_order: custom
+
+
+
+dynamic_collections:
+  TMDb Collections:          # This name is the mapping name
+    type: tmdb_collection
+    remove_suffix: "Collection"
+    default_template:
+      minimum_items: 2
+    collection_mode: hide
