@@ -204,7 +204,7 @@ overlays:
       file: config/metadata/overlays/status/status_returning.png
     plex_all: true
     filters:
-      tmdb_status: returningµ
+      tmdb_status: returning
 
   Ended:
     overlay:
