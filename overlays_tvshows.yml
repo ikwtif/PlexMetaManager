@@ -173,3 +173,49 @@ overlays:
         # - 576p
         # - 480p
         # - dv
+
+######################################################
+#               OVERLAYS - STATUS                    #
+######################################################
+
+  Canceled:
+    overlay:
+      name: Canceled
+      group: Status
+      weight: 20
+      horizontal_offset: 0
+      horizontal_align: left
+      vertical_offset: 0
+      vertical_align: bottom
+      file: config/metadata/overlays/status/status_canceled.png
+    plex_all: true
+    filters:
+      tmdb_status: canceled
+
+  Returning:
+    overlay:
+      name: Cancelled
+      group: Status
+      weight: 20
+      horizontal_offset: 0
+      horizontal_align: left
+      vertical_offset: 0
+      vertical_align: bottom
+      file: config/metadata/overlays/status/status_returning.png
+    plex_all: true
+    filters:
+      tmdb_status: returningµ
+
+  Ended:
+    overlay:
+      name: Ended
+      group: Status
+      weight: 20
+      horizontal_offset: 0
+      horizontal_align: left
+      vertical_offset: 0
+      vertical_align: bottom
+      file: config/metadata/overlays/status/status_ended.png
+    plex_all: true
+    filters:
+      tmdb_status: ended
